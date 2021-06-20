@@ -36,7 +36,7 @@ def insertionSortSteps(arr: list[int]):
 
 
 screen_width, screen_height = 800, 600
-input_arr = sample([i for i in range(1, 200)], 40)
+input_arr = sample([i for i in range(10, 200)], 40)
 
 result = None
 iterator = None
@@ -62,4 +62,4 @@ def draw():
         arrayToGraph(r[0], None)
 
 if __name__ == "__main__":
-    run(frame_rate=20)
+    run(frame_rate=30)

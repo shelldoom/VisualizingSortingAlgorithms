@@ -1,6 +1,6 @@
 Visualizing sorting algorithms
 
-![Insertion Sort Example](https://i.imgur.com/uQPXtq1.gif)
+![Insertion Sort Example](https://i.imgur.com/eDMQCpI.gif)
 <p style="text-align: center;"><b>Insertion Sort</b></p>
 
 Implemented so far:
