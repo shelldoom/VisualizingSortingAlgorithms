@@ -15,19 +15,20 @@ class Point:
 
 pygame.init()
 
-# Reduce the FPS to see the sorting comparison carefully
-# NOTE: Press `ENTER` many times to start sorting if the FPS is very low, 
+# Avoid reducing the FPS, instead change the delay_seconds rather
+# NOTE: Press `ENTER` many times to start sorting if the FPS is very low,
 # since it becomes difficult to capture key/mouse events for lower FPS
-FPS = 7
+FPS = 60
+# Delay between each step
+delay_seconds = 0.2
 size = resX, resY = 800, 600
 origin = Point(0, 0)
 screen = pygame.display.set_mode(size)
 pygame.display.set_caption("SortingLyf")
 clock = pygame.time.Clock()
-zoom_factor = 1.01 + (0.1 if FPS <= 15 else 0) + (0.1 if FPS <= 5 else 0)
+zoom_factor = 1.03 # + (0.1 if FPS <= 15 else 0) + (0.1 if FPS <= 5 else 0)
 zoom_offset = 15
-translation_offset = 15 + (5 if FPS <= 15 else 0) + (5 if FPS <= 5 else 0)
-
+translation_offset = 20 # + (5 if FPS <= 15 else 0) + (5 if FPS <= 5 else 0)
 
 def displayArray(arr: list[int], beingUsed: set[tuple[int, color]], display_text: bool = True):
     smallest = min(arr)
@@ -49,7 +50,7 @@ def displayArray(arr: list[int], beingUsed: set[tuple[int, color]], display_text
     maxHeight = resY
 
     if smallest < 0:
-        scaling_factor = (resY/2)/(1.25*max(arr))
+        scaling_factor = (resY/2)/(1.25*max(max(arr), -smallest))
         maxHeight = resY/2
 
     x = origin.x
@@ -84,7 +85,7 @@ def displayArray(arr: list[int], beingUsed: set[tuple[int, color]], display_text
 
 
 # Array Setup
-arr = random.choices(range(0, 100), k=20)
+arr = random.choices(range(-100, 100), k=30)
 # List of columns/bars that are being compared/used while sorting algorithm is being executed
 beingUsed = {} 
 start_sorting = False
@@ -111,11 +112,11 @@ while 1:
 
     # Display the array
     displayArray(arr, beingUsed, True)
-
     # Update the array by getting its next state
     if start_sorting:
         try:
             arr, beingUsed = next(sorter)
+            pygame.time.delay(int(delay_seconds * 1000))
         except StopIteration:
             beingUsed = {}
 
