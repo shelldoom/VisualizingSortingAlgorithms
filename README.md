@@ -4,26 +4,26 @@
 
 ### Control:
 - Use `WASD` or `arrow` keys to move around
-- Use `Q`, `E` or `mouse scroll` to zoom in/out (Not perfect, can't figure how to deal with this)
+- Use `Q`, `E` or `mouse scroll` to zoom in/out (Not perfect)
 - Press `Enter` to start the sorting
 
-**NOTE:** If the FPS set is very low, you might have to press `ENTER` many times to begin sorting
+**NOTE:** Avoid changing the FPS. Changing it might result in unexpected behavior.
 
-### Features:
+### Usage and Features:
+- Increase `delay_seconds` in the code to reduce the sorting speed. (Recommended value = 0.2 seconds)
+- Set `delay_seconds` to 0, if you want to pan/zoom around the screen.
 - Supports negative numbers
 - `Red` bar indicates there is swapping taking place
-- `Yellow` bar indicates smaller pointer
-- `Dark Yellow` bar indicates larger pointer
+- `Orange` bar indicates smaller pointer
+- `Gold` bar indicates larger pointer
 - For Quick Sort, `Blue` bar indicates the Pivot
 
-### Implemented so far:
+### Implemented for following sorting algorithms:
 1. Insertion Sort
 2. Bubble Sort
 3. Quick Sort
 
-
 ### Todo List:
-- Merge Sort, Radix Sort, Heap Sort, Shell Sort
 - How to deal when the array size is so large that it can't fit in the screen
     - Reduce the array such that it autofits to the screen
     - Autofit to the screen while zooming in/out
@@ -38,3 +38,11 @@ git clone <repository_url>.git
 pip install -r requirements.txt
 python3 ./main.py
 ```
+### Bubble Sort
+![Bubble Sort](images/bubbleSort.gif)
+
+### Insertion Sort
+![Insertion Sort](images/insertionSort.gif)
+
+### Quick Sort
+![Quick Sort](images/quickSort.gif)
